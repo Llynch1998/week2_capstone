@@ -6,6 +6,8 @@ let audioUrl;
 let audio;
 let recording = false;
 let stream;
+let clips = [];
+let clipCounter = 0;
 
 let recordBtn = document.querySelector("#record");
 
@@ -31,9 +33,7 @@ navigator.mediaDevices.getUserMedia({ audio: true })
         }
         
     }
-    // stopBtn.onclick = (e) => {
-    //     mediaRecorder.stop();
-    // }
+    
 
     audioChunks = [];
 
@@ -45,7 +45,15 @@ navigator.mediaDevices.getUserMedia({ audio: true })
         audioUrl = URL.createObjectURL(audioBlob);
         audioUrls.push(audioUrl);
         audio = new Audio(audioUrl);
-      audio.play();
+        clips.push(audio);
+        audio.play();
       });
     
   });
+
+  document.querySelector("#play").onclick = () =>{
+      for(let i = 0; i < clips.length; i++){
+          clips[i].play();
+      }
+  }
+
