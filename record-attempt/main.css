@@ -102,7 +102,6 @@ input:checked + .slider:before {
 }
 
 #funkyButton {
-
   position: absolute;
   height: 75px;
   width: 200px;
@@ -124,4 +123,18 @@ input:checked + .slider:before {
   border-radius: 50px;
   margin-top: 5.5%;
   margin-left: 8%;
+}
+
+
+#stopButton, #playButton {
+  position: absolute;
+  height: 30px;
+  width: 40px;
+  background: #0F031B;
+  border: 4px solid #535353;
+  border-color: #6FEFD0;
+  box-sizing: border-box;
+  right: 25%;
+  top: 15%;
+  bottom: 31.39%;
 }
