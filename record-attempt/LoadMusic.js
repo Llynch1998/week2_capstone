@@ -6,14 +6,14 @@
   var NUM_SAMPLES = 256;
 
   //These need to have audio files implemented
-  var sound1 = '';
-  var sound2 = '';
-  var sound3 = '';
-  var sound4 = '';
-  var sound5 = '';
-  var sound6 = '';
-  var sound7 = '';
-  var sound8 = '';
+  var sound1 = 'assets/Sounds/Snare.mp3';
+  var sound2 = 'assets/Sounds/KickDrum.mp3';
+  var sound3 = 'assets/Sounds/Bass.mp3';
+  var sound4 = 'assets/Sounds/Synth.mp3';
+  var sound5 = 'assets/Sounds/Piano.mp3';
+  var sound6 = 'assets/Sounds/Strings.mp3';
+  var sound7 = 'assets/Sounds/Guitar.mp3';
+  var sound8 = 'assets/Sounds/HiHat.mp3';
 
   var audioElement;
   var analyserNode;
@@ -26,7 +26,7 @@
     analyserNode = createWebAudioContextWithAnalyserNode(audioElement);
 
     // load and play default sound into audio element
-    playStream(audioElement, sound1);
+    playStream(audioElement, stitchAudio());
   }
 
 
@@ -52,54 +52,51 @@
     analyserNode.connect(audioCtx.destination);
     return analyserNode;
   }
-  
+
   //This should work for playing audio at the same time, but I'm also doing a second method
   //  Just to see if it works...
   function stitchAudio() {
-    var snd1, snd2, snd3, snd4, snd5, snd6, snd7, snd8 = new Audio();
-    var src1, src2, src3, src4, src5, src6, src7, src8 = document.createElement("source");
-    
-    src1.type = "audio/mpeg";
-    src1.src = sound1;
-    snd1.appendChild(src1);
+    var snd1 = new Audio(sound1);
+    var src1 = snd1;
 
-    src2.type = "audio/mpeg";
-    src2.src = sound2;
-    snd2.appendChild(src2);
-    
-    src3.type = "audio/mpeg";
-    src3.src = sound3;
-    snd3.appendChild(src3);
-    
-    src4.type = "audio/mpeg";
-    src4.src = sound4;
-    snd4.appendChild(src4);
-    
-    src5.type = "audio/mpeg";
-    src5.src = sound1;
-    snd5.appendChild(src5);
+    var snd2 = new Audio(sound2);
+    var src2 = snd2;
 
-    src6.type = "audio/mpeg";
-    src6.src = sound6;
-    snd6.appendChild(src6);
-    
-    src7.type = "audio/mpeg";
-    src7.src = sound7;
-    snd7.appendChild(src7);
-    
-    src8.type = "audio/mpeg";
-    src8.src = sound8;
-    snd8.appendChild(src8);
-    
-    snd1.play(); snd2.play(); snd3.play(); snd4.play(); snd5.play(); snd6.play(); snd7.play(); snd8.play();
+    var snd3 = new Audio(sound3);
+    var src3 = snd3;
+
+    var snd4 = new Audio(sound4);
+    var src4 = snd4;
+
+    var snd4 = new Audio(sound4);
+
+    var snd5 = new Audio(sound5);
+    var src5 = snd5;
+
+    var snd6 = new Audio(sound6);
+    var src6 = snd6;
+
+    var snd7 = new Audio(sound7);
+    var src7 = snd7;
+
+    var snd8 = new Audio(sound8);
+    var src8 = snd8;
   }
 
   //Changes the message to display the current song being played
   function playStream(audioElement, path) {
     audioElement.src = path;
-    audioElement.play();
+    var promise = audioElement.play();
+    
+    if (promise !== undefined) {
+    promise.then(_ => {
+        // Autoplay started!
+    }).catch(error => {
+        // Autoplay was prevented.
+        // Show a "Play" button so that user can start playback.
+    });
+}
     audioElement.volume = 0.2;
-    document.querySelector('#status').innerHTML = "Now playing: " + path;
   }
 
   function update() {

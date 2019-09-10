@@ -19,7 +19,7 @@
     <div id="playButton" style="left: 15%;">Play
     </div>
   </div>
-  
+
   <div class="status">
     <div id="stopButton" style="left: 20%;">Stop
     </div>
@@ -32,7 +32,7 @@
       <div id="smallerRing">
         <label class="roundBtn">
           <input type="checkbox">
-          <span class="snare"></span>
+          <span class="snare">SNARE</span>
         </label>
       </div>
     </div>
@@ -42,30 +42,38 @@
     <input type="checkbox">
     <span class="slider"></span>
   </label>
+  <div style="position: absolute; left: 38%; top: 55%;">KICK</div>
+
   <label class="switch" style="left: 45%;">
     <input type="checkbox">
     <span class="slider"></span>
   </label>
+  <div style="position: absolute; left: 43%; top: 55%;">BASS</div>
 
   <label class="switch" style="left: 50%;">
     <input type="checkbox">
     <span class="slider"></span>
   </label>
+  <div style="position: absolute; left: 48%; top: 55%;">SYNTH</div>
 
   <label class="switch" style="left: 55%;">
     <input type="checkbox">
     <span class="slider"></span>
   </label>
+  <div style="position: absolute; left: 53%; top: 55%;">PIANO</div>
+
 
   <label class="switch" style="left: 60%;">
     <input type="checkbox">
     <span class="slider"></span>
   </label>
+  <div style="position: absolute; left: 58%; top: 55%;">STRINGS</div>
 
   <label class="switch" style="left: 65%;">
     <input type="checkbox">
     <span class="slider"></span>
   </label>
+  <div style="position: absolute; left: 63%; top: 55%;">GUITAR</div>
 
 
   <div id="hiHat">
@@ -73,7 +81,7 @@
       <div id="smallerRing">
         <label class="roundBtn" style="left: 80%">
           <input type="checkbox">
-          <span class="hiHat"></span>
+          <span class="hiHat">HI-HAT</span>
         </label>
       </div>
     </div>
@@ -83,5 +91,7 @@
     <span class="funky" style="margin-left: 25%; color: #6FEFD0">GET FUNKY</span>
     <input type="checkbox">
   </div>
+  <audio id="player" controls loop></audio>
 </body>
-<script src="index.js"></script></html>
+<script src="index.js"></script>
+<script src="LoadMusic.js"></script></html>
